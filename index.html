@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pisimiyav</title>
+    <style>
+        body{
+            background-color: rgb(40, 40, 40);
+        }
+        #a{
+            background-color: azure;
+            width: 90px;
+            height: 90px;
+            border-radius: 50px;
+            margin-top: 90px;
+        }
+        #kont2{
+            display: none;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(blue, green);
+        }
+        #story{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="story()">Hikaye: </button>
+    <div id="story">
+        <p>Peynir (biz) Portakal İle Savaşırken Portakal Peyniri Hapsetti Peynir Portakal Her Geldiğinde Saklanıyordu.Ve Peynir Biraz Bekledikden Sonra Gönül Abla Portakalı Beslerken Peynirde Kaçıyordu.</p>
+    </div>
+    <div id="kont2">
+        <h2>Başardın: </h2>
+        <p>Gönül Abla Portakalı Besliyor Kurtuldun !</p>
+        <button onclick="X()">:) Tekrar Oyna !</button>
+    </div>
+    <div id="kont1">
+    <p id="zaman">0</p>
+    <div id="a"></div>
+    <button onclick="A1()" id="s1i">Saklan</button>
+    <button onclick="X()" id="sss" style="display: none;">:( Tekrar Dene</button>
+    </div>
+    <script>
+        var kt = document.getElementById("a");
+        var y = "false";
+        var k1 = "false";
+        var s1 = 0;
+        var sI1 = setInterval(function(){
+s1 += 1;
+document.getElementById("zaman").innerHTML = s1;
+        }, 1000)
+function A1(){
+S1();
+setTimeout(function(){
+S2();
+}, 4000)
+}
+function S1(){
+    kt.style.opacity = "20%";
+    k1 = "true";
+}
+function S2(){
+    kt.style.opacity = "100%";
+    k1 = "false";
+}
+var k2 = setInterval(function(){
+    if(k1 === "false"){
+y = "true";
+    }
+    else if(k1 === "true"){
+        y = "false";
+            }
+
+            if(y === "true"){
+            KFN1();
+            }
+}, 10000)
+setInterval(function(){
+                if(s1 >= 60){
+document.getElementById("kont1").style.display = "none";
+document.getElementById("kont2").style.display = "block";
+clearInterval(k2);
+            }
+}, 1000)
+function KFN1(){
+    const audio = new Audio("ses1.mp3");
+    audio.play();
+    kt.style.display = "none";
+    document.getElementById("s1i").style.display = "none";
+    var s1s = document.createElement("h1");
+    s1s.textContent = "😿";
+    document.body.appendChild(s1s);
+    document.getElementById("sss").style.display = "block";
+    document.getElementById("zaman").innerHTML = "Rekorun: " + s1;
+    clearInterval(sI1);
+    clearInterval(k2);
+}
+function X(){
+    location.reload();
+}
+function story(){
+    clearInterval(k2);
+    clearInterval(sI1);
+    document.getElementById("kont1").style.display = "none";
+    document.getElementById("kont2").style.display = "none";
+    document.getElementById("story").style.display = "block";
+}
+    </script>
+</body>
+</html>
